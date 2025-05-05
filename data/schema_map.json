@@ -1,0 +1,778 @@
+{
+  "patients_random": {
+    "columns": [
+      "ROW_ID",
+      "SUBJECT_ID",
+      "GENDER",
+      "DOB",
+      "DOD",
+      "DOD_HOSP",
+      "DOD_SSN",
+      "EXPIRE_FLAG"
+    ],
+    "types": {
+      "ROW_ID": "INTEGER",
+      "SUBJECT_ID": "INTEGER",
+      "GENDER": "TEXT",
+      "DOB": "TEXT",
+      "DOD": "TEXT",
+      "DOD_HOSP": "TEXT",
+      "DOD_SSN": "TEXT",
+      "EXPIRE_FLAG": "INTEGER"
+    }
+  },
+  "outputevents_random": {
+    "columns": [
+      "ROW_ID",
+      "SUBJECT_ID",
+      "HADM_ID",
+      "ICUSTAY_ID",
+      "CHARTTIME",
+      "ITEMID",
+      "VALUE",
+      "VALUEUOM",
+      "STORETIME",
+      "CGID",
+      "STOPPED",
+      "NEWBOTTLE",
+      "ISERROR"
+    ],
+    "types": {
+      "ROW_ID": "INTEGER",
+      "SUBJECT_ID": "INTEGER",
+      "HADM_ID": "REAL",
+      "ICUSTAY_ID": "REAL",
+      "CHARTTIME": "TEXT",
+      "ITEMID": "INTEGER",
+      "VALUE": "REAL",
+      "VALUEUOM": "TEXT",
+      "STORETIME": "TEXT",
+      "CGID": "INTEGER",
+      "STOPPED": "REAL",
+      "NEWBOTTLE": "REAL",
+      "ISERROR": "REAL"
+    }
+  },
+  "transfers_random": {
+    "columns": [
+      "ROW_ID",
+      "SUBJECT_ID",
+      "HADM_ID",
+      "ICUSTAY_ID",
+      "DBSOURCE",
+      "EVENTTYPE",
+      "PREV_CAREUNIT",
+      "CURR_CAREUNIT",
+      "PREV_WARDID",
+      "CURR_WARDID",
+      "INTIME",
+      "OUTTIME",
+      "LOS"
+    ],
+    "types": {
+      "ROW_ID": "INTEGER",
+      "SUBJECT_ID": "INTEGER",
+      "HADM_ID": "INTEGER",
+      "ICUSTAY_ID": "REAL",
+      "DBSOURCE": "TEXT",
+      "EVENTTYPE": "TEXT",
+      "PREV_CAREUNIT": "TEXT",
+      "CURR_CAREUNIT": "TEXT",
+      "PREV_WARDID": "REAL",
+      "CURR_WARDID": "REAL",
+      "INTIME": "TEXT",
+      "OUTTIME": "TEXT",
+      "LOS": "REAL"
+    }
+  },
+  "procedures_icd_random": {
+    "columns": [
+      "ROW_ID",
+      "SUBJECT_ID",
+      "HADM_ID",
+      "SEQ_NUM",
+      "ICD9_CODE"
+    ],
+    "types": {
+      "ROW_ID": "INTEGER",
+      "SUBJECT_ID": "INTEGER",
+      "HADM_ID": "INTEGER",
+      "SEQ_NUM": "INTEGER",
+      "ICD9_CODE": "INTEGER"
+    }
+  },
+  "labevents_random": {
+    "columns": [
+      "ROW_ID",
+      "SUBJECT_ID",
+      "HADM_ID",
+      "ITEMID",
+      "CHARTTIME",
+      "VALUE",
+      "VALUENUM",
+      "VALUEUOM",
+      "FLAG"
+    ],
+    "types": {
+      "ROW_ID": "INTEGER",
+      "SUBJECT_ID": "INTEGER",
+      "HADM_ID": "REAL",
+      "ITEMID": "INTEGER",
+      "CHARTTIME": "TEXT",
+      "VALUE": "TEXT",
+      "VALUENUM": "REAL",
+      "VALUEUOM": "TEXT",
+      "FLAG": "TEXT"
+    }
+  },
+  "microbiologyevents_random": {
+    "columns": [
+      "ROW_ID",
+      "SUBJECT_ID",
+      "HADM_ID",
+      "CHARTDATE",
+      "CHARTTIME",
+      "SPEC_ITEMID",
+      "SPEC_TYPE_DESC",
+      "ORG_ITEMID",
+      "ORG_NAME",
+      "ISOLATE_NUM",
+      "AB_ITEMID",
+      "AB_NAME",
+      "DILUTION_TEXT",
+      "DILUTION_COMPARISON",
+      "DILUTION_VALUE",
+      "INTERPRETATION"
+    ],
+    "types": {
+      "ROW_ID": "INTEGER",
+      "SUBJECT_ID": "INTEGER",
+      "HADM_ID": "INTEGER",
+      "CHARTDATE": "TEXT",
+      "CHARTTIME": "TEXT",
+      "SPEC_ITEMID": "REAL",
+      "SPEC_TYPE_DESC": "TEXT",
+      "ORG_ITEMID": "REAL",
+      "ORG_NAME": "TEXT",
+      "ISOLATE_NUM": "REAL",
+      "AB_ITEMID": "REAL",
+      "AB_NAME": "TEXT",
+      "DILUTION_TEXT": "TEXT",
+      "DILUTION_COMPARISON": "TEXT",
+      "DILUTION_VALUE": "REAL",
+      "INTERPRETATION": "TEXT"
+    }
+  },
+  "d_cpt": {
+    "columns": [
+      "ROW_ID",
+      "CATEGORY",
+      "SECTIONRANGE",
+      "SECTIONHEADER",
+      "SUBSECTIONRANGE",
+      "SUBSECTIONHEADER",
+      "CODESUFFIX",
+      "MINCODEINSUBSECTION",
+      "MAXCODEINSUBSECTION"
+    ],
+    "types": {
+      "ROW_ID": "INTEGER",
+      "CATEGORY": "INTEGER",
+      "SECTIONRANGE": "TEXT",
+      "SECTIONHEADER": "TEXT",
+      "SUBSECTIONRANGE": "TEXT",
+      "SUBSECTIONHEADER": "TEXT",
+      "CODESUFFIX": "TEXT",
+      "MINCODEINSUBSECTION": "INTEGER",
+      "MAXCODEINSUBSECTION": "INTEGER"
+    }
+  },
+  "admissions_random": {
+    "columns": [
+      "ROW_ID",
+      "SUBJECT_ID",
+      "HADM_ID",
+      "ADMITTIME",
+      "DISCHTIME",
+      "DEATHTIME",
+      "ADMISSION_TYPE",
+      "ADMISSION_LOCATION",
+      "DISCHARGE_LOCATION",
+      "INSURANCE",
+      "LANGUAGE",
+      "RELIGION",
+      "MARITAL_STATUS",
+      "ETHNICITY",
+      "EDREGTIME",
+      "EDOUTTIME",
+      "DIAGNOSIS",
+      "HOSPITAL_EXPIRE_FLAG",
+      "HAS_CHARTEVENTS_DATA"
+    ],
+    "types": {
+      "ROW_ID": "INTEGER",
+      "SUBJECT_ID": "INTEGER",
+      "HADM_ID": "INTEGER",
+      "ADMITTIME": "TEXT",
+      "DISCHTIME": "TEXT",
+      "DEATHTIME": "TEXT",
+      "ADMISSION_TYPE": "TEXT",
+      "ADMISSION_LOCATION": "TEXT",
+      "DISCHARGE_LOCATION": "TEXT",
+      "INSURANCE": "TEXT",
+      "LANGUAGE": "TEXT",
+      "RELIGION": "TEXT",
+      "MARITAL_STATUS": "TEXT",
+      "ETHNICITY": "TEXT",
+      "EDREGTIME": "TEXT",
+      "EDOUTTIME": "TEXT",
+      "DIAGNOSIS": "TEXT",
+      "HOSPITAL_EXPIRE_FLAG": "INTEGER",
+      "HAS_CHARTEVENTS_DATA": "INTEGER"
+    }
+  },
+  "d_items": {
+    "columns": [
+      "ROW_ID",
+      "ITEMID",
+      "LABEL",
+      "ABBREVIATION",
+      "DBSOURCE",
+      "LINKSTO",
+      "CATEGORY",
+      "UNITNAME",
+      "PARAM_TYPE",
+      "CONCEPTID"
+    ],
+    "types": {
+      "ROW_ID": "INTEGER",
+      "ITEMID": "INTEGER",
+      "LABEL": "TEXT",
+      "ABBREVIATION": "TEXT",
+      "DBSOURCE": "TEXT",
+      "LINKSTO": "TEXT",
+      "CATEGORY": "TEXT",
+      "UNITNAME": "TEXT",
+      "PARAM_TYPE": "TEXT",
+      "CONCEPTID": "REAL"
+    }
+  },
+  "caregivers": {
+    "columns": [
+      "ROW_ID",
+      "CGID",
+      "LABEL",
+      "DESCRIPTION"
+    ],
+    "types": {
+      "ROW_ID": "INTEGER",
+      "CGID": "INTEGER",
+      "LABEL": "TEXT",
+      "DESCRIPTION": "TEXT"
+    }
+  },
+  "callout_random": {
+    "columns": [
+      "ROW_ID",
+      "SUBJECT_ID",
+      "HADM_ID",
+      "SUBMIT_WARDID",
+      "SUBMIT_CAREUNIT",
+      "CURR_WARDID",
+      "CURR_CAREUNIT",
+      "CALLOUT_WARDID",
+      "CALLOUT_SERVICE",
+      "REQUEST_TELE",
+      "REQUEST_RESP",
+      "REQUEST_CDIFF",
+      "REQUEST_MRSA",
+      "REQUEST_VRE",
+      "CALLOUT_STATUS",
+      "CALLOUT_OUTCOME",
+      "DISCHARGE_WARDID",
+      "ACKNOWLEDGE_STATUS",
+      "CREATETIME",
+      "UPDATETIME",
+      "ACKNOWLEDGETIME",
+      "OUTCOMETIME",
+      "FIRSTRESERVATIONTIME",
+      "CURRENTRESERVATIONTIME"
+    ],
+    "types": {
+      "ROW_ID": "INTEGER",
+      "SUBJECT_ID": "INTEGER",
+      "HADM_ID": "INTEGER",
+      "SUBMIT_WARDID": "REAL",
+      "SUBMIT_CAREUNIT": "TEXT",
+      "CURR_WARDID": "REAL",
+      "CURR_CAREUNIT": "TEXT",
+      "CALLOUT_WARDID": "INTEGER",
+      "CALLOUT_SERVICE": "TEXT",
+      "REQUEST_TELE": "INTEGER",
+      "REQUEST_RESP": "INTEGER",
+      "REQUEST_CDIFF": "INTEGER",
+      "REQUEST_MRSA": "INTEGER",
+      "REQUEST_VRE": "INTEGER",
+      "CALLOUT_STATUS": "TEXT",
+      "CALLOUT_OUTCOME": "TEXT",
+      "DISCHARGE_WARDID": "REAL",
+      "ACKNOWLEDGE_STATUS": "TEXT",
+      "CREATETIME": "TEXT",
+      "UPDATETIME": "TEXT",
+      "ACKNOWLEDGETIME": "TEXT",
+      "OUTCOMETIME": "TEXT",
+      "FIRSTRESERVATIONTIME": "TEXT",
+      "CURRENTRESERVATIONTIME": "TEXT"
+    }
+  },
+  "procedureevents_mv_random": {
+    "columns": [
+      "ROW_ID",
+      "SUBJECT_ID",
+      "HADM_ID",
+      "ICUSTAY_ID",
+      "STARTTIME",
+      "ENDTIME",
+      "ITEMID",
+      "VALUE",
+      "VALUEUOM",
+      "LOCATION",
+      "LOCATIONCATEGORY",
+      "STORETIME",
+      "CGID",
+      "ORDERID",
+      "LINKORDERID",
+      "ORDERCATEGORYNAME",
+      "SECONDARYORDERCATEGORYNAME",
+      "ORDERCATEGORYDESCRIPTION",
+      "ISOPENBAG",
+      "CONTINUEINNEXTDEPT",
+      "CANCELREASON",
+      "STATUSDESCRIPTION",
+      "COMMENTS_EDITEDBY",
+      "COMMENTS_CANCELEDBY",
+      "COMMENTS_DATE"
+    ],
+    "types": {
+      "ROW_ID": "INTEGER",
+      "SUBJECT_ID": "INTEGER",
+      "HADM_ID": "INTEGER",
+      "ICUSTAY_ID": "REAL",
+      "STARTTIME": "TEXT",
+      "ENDTIME": "TEXT",
+      "ITEMID": "INTEGER",
+      "VALUE": "REAL",
+      "VALUEUOM": "TEXT",
+      "LOCATION": "TEXT",
+      "LOCATIONCATEGORY": "TEXT",
+      "STORETIME": "TEXT",
+      "CGID": "INTEGER",
+      "ORDERID": "INTEGER",
+      "LINKORDERID": "INTEGER",
+      "ORDERCATEGORYNAME": "TEXT",
+      "SECONDARYORDERCATEGORYNAME": "REAL",
+      "ORDERCATEGORYDESCRIPTION": "TEXT",
+      "ISOPENBAG": "INTEGER",
+      "CONTINUEINNEXTDEPT": "INTEGER",
+      "CANCELREASON": "INTEGER",
+      "STATUSDESCRIPTION": "TEXT",
+      "COMMENTS_EDITEDBY": "TEXT",
+      "COMMENTS_CANCELEDBY": "TEXT",
+      "COMMENTS_DATE": "TEXT"
+    }
+  },
+  "d_labitems": {
+    "columns": [
+      "ROW_ID",
+      "ITEMID",
+      "LABEL",
+      "FLUID",
+      "CATEGORY",
+      "LOINC_CODE"
+    ],
+    "types": {
+      "ROW_ID": "INTEGER",
+      "ITEMID": "INTEGER",
+      "LABEL": "TEXT",
+      "FLUID": "TEXT",
+      "CATEGORY": "TEXT",
+      "LOINC_CODE": "TEXT"
+    },
+    "join_keys": [
+      "itemid",
+      "label"
+    ]
+  },
+  "icustays_random": {
+    "columns": [
+      "ROW_ID",
+      "SUBJECT_ID",
+      "HADM_ID",
+      "ICUSTAY_ID",
+      "DBSOURCE",
+      "FIRST_CAREUNIT",
+      "LAST_CAREUNIT",
+      "FIRST_WARDID",
+      "LAST_WARDID",
+      "INTIME",
+      "OUTTIME",
+      "LOS"
+    ],
+    "types": {
+      "ROW_ID": "INTEGER",
+      "SUBJECT_ID": "INTEGER",
+      "HADM_ID": "INTEGER",
+      "ICUSTAY_ID": "INTEGER",
+      "DBSOURCE": "TEXT",
+      "FIRST_CAREUNIT": "TEXT",
+      "LAST_CAREUNIT": "TEXT",
+      "FIRST_WARDID": "INTEGER",
+      "LAST_WARDID": "INTEGER",
+      "INTIME": "TEXT",
+      "OUTTIME": "TEXT",
+      "LOS": "REAL"
+    }
+  },
+  "inputevents_cv_random": {
+    "columns": [
+      "ROW_ID",
+      "SUBJECT_ID",
+      "HADM_ID",
+      "ICUSTAY_ID",
+      "CHARTTIME",
+      "ITEMID",
+      "AMOUNT",
+      "AMOUNTUOM",
+      "RATE",
+      "RATEUOM",
+      "STORETIME",
+      "CGID",
+      "ORDERID",
+      "LINKORDERID",
+      "STOPPED",
+      "NEWBOTTLE",
+      "ORIGINALAMOUNT",
+      "ORIGINALAMOUNTUOM",
+      "ORIGINALROUTE",
+      "ORIGINALRATE",
+      "ORIGINALRATEUOM",
+      "ORIGINALSITE"
+    ],
+    "types": {
+      "ROW_ID": "INTEGER",
+      "SUBJECT_ID": "INTEGER",
+      "HADM_ID": "REAL",
+      "ICUSTAY_ID": "REAL",
+      "CHARTTIME": "TEXT",
+      "ITEMID": "INTEGER",
+      "AMOUNT": "REAL",
+      "AMOUNTUOM": "TEXT",
+      "RATE": "REAL",
+      "RATEUOM": "TEXT",
+      "STORETIME": "TEXT",
+      "CGID": "REAL",
+      "ORDERID": "INTEGER",
+      "LINKORDERID": "INTEGER",
+      "STOPPED": "TEXT",
+      "NEWBOTTLE": "REAL",
+      "ORIGINALAMOUNT": "REAL",
+      "ORIGINALAMOUNTUOM": "TEXT",
+      "ORIGINALROUTE": "TEXT",
+      "ORIGINALRATE": "REAL",
+      "ORIGINALRATEUOM": "TEXT",
+      "ORIGINALSITE": "TEXT"
+    }
+  },
+  "inputevents_mv_random": {
+    "columns": [
+      "ROW_ID",
+      "SUBJECT_ID",
+      "HADM_ID",
+      "ICUSTAY_ID",
+      "STARTTIME",
+      "ENDTIME",
+      "ITEMID",
+      "AMOUNT",
+      "AMOUNTUOM",
+      "RATE",
+      "RATEUOM",
+      "STORETIME",
+      "CGID",
+      "ORDERID",
+      "LINKORDERID",
+      "ORDERCATEGORYNAME",
+      "SECONDARYORDERCATEGORYNAME",
+      "ORDERCOMPONENTTYPEDESCRIPTION",
+      "ORDERCATEGORYDESCRIPTION",
+      "PATIENTWEIGHT",
+      "TOTALAMOUNT",
+      "TOTALAMOUNTUOM",
+      "ISOPENBAG",
+      "CONTINUEINNEXTDEPT",
+      "CANCELREASON",
+      "STATUSDESCRIPTION",
+      "COMMENTS_EDITEDBY",
+      "COMMENTS_CANCELEDBY",
+      "COMMENTS_DATE",
+      "ORIGINALAMOUNT",
+      "ORIGINALRATE"
+    ],
+    "types": {
+      "ROW_ID": "INTEGER",
+      "SUBJECT_ID": "INTEGER",
+      "HADM_ID": "INTEGER",
+      "ICUSTAY_ID": "REAL",
+      "STARTTIME": "TEXT",
+      "ENDTIME": "TEXT",
+      "ITEMID": "INTEGER",
+      "AMOUNT": "REAL",
+      "AMOUNTUOM": "TEXT",
+      "RATE": "REAL",
+      "RATEUOM": "TEXT",
+      "STORETIME": "TEXT",
+      "CGID": "INTEGER",
+      "ORDERID": "INTEGER",
+      "LINKORDERID": "INTEGER",
+      "ORDERCATEGORYNAME": "TEXT",
+      "SECONDARYORDERCATEGORYNAME": "TEXT",
+      "ORDERCOMPONENTTYPEDESCRIPTION": "TEXT",
+      "ORDERCATEGORYDESCRIPTION": "TEXT",
+      "PATIENTWEIGHT": "REAL",
+      "TOTALAMOUNT": "REAL",
+      "TOTALAMOUNTUOM": "TEXT",
+      "ISOPENBAG": "INTEGER",
+      "CONTINUEINNEXTDEPT": "INTEGER",
+      "CANCELREASON": "INTEGER",
+      "STATUSDESCRIPTION": "TEXT",
+      "COMMENTS_EDITEDBY": "TEXT",
+      "COMMENTS_CANCELEDBY": "TEXT",
+      "COMMENTS_DATE": "TEXT",
+      "ORIGINALAMOUNT": "REAL",
+      "ORIGINALRATE": "REAL"
+    }
+  },
+  "services_random": {
+    "columns": [
+      "ROW_ID",
+      "SUBJECT_ID",
+      "HADM_ID",
+      "TRANSFERTIME",
+      "PREV_SERVICE",
+      "CURR_SERVICE"
+    ],
+    "types": {
+      "ROW_ID": "INTEGER",
+      "SUBJECT_ID": "INTEGER",
+      "HADM_ID": "INTEGER",
+      "TRANSFERTIME": "TEXT",
+      "PREV_SERVICE": "TEXT",
+      "CURR_SERVICE": "TEXT"
+    }
+  },
+  "prescriptions_random": {
+    "columns": [
+      "ROW_ID",
+      "SUBJECT_ID",
+      "HADM_ID",
+      "ICUSTAY_ID",
+      "STARTDATE",
+      "ENDDATE",
+      "DRUG_TYPE",
+      "DRUG",
+      "DRUG_NAME_POE",
+      "DRUG_NAME_GENERIC",
+      "FORMULARY_DRUG_CD",
+      "GSN",
+      "NDC",
+      "PROD_STRENGTH",
+      "DOSE_VAL_RX",
+      "DOSE_UNIT_RX",
+      "FORM_VAL_DISP",
+      "FORM_UNIT_DISP",
+      "ROUTE"
+    ],
+    "types": {
+      "ROW_ID": "INTEGER",
+      "SUBJECT_ID": "INTEGER",
+      "HADM_ID": "INTEGER",
+      "ICUSTAY_ID": "REAL",
+      "STARTDATE": "TEXT",
+      "ENDDATE": "TEXT",
+      "DRUG_TYPE": "TEXT",
+      "DRUG": "TEXT",
+      "DRUG_NAME_POE": "TEXT",
+      "DRUG_NAME_GENERIC": "TEXT",
+      "FORMULARY_DRUG_CD": "TEXT",
+      "GSN": "TEXT",
+      "NDC": "REAL",
+      "PROD_STRENGTH": "TEXT",
+      "DOSE_VAL_RX": "TEXT",
+      "DOSE_UNIT_RX": "TEXT",
+      "FORM_VAL_DISP": "TEXT",
+      "FORM_UNIT_DISP": "TEXT",
+      "ROUTE": "TEXT"
+    }
+  },
+  "drgcodes_random": {
+    "columns": [
+      "ROW_ID",
+      "SUBJECT_ID",
+      "HADM_ID",
+      "DRG_TYPE",
+      "DRG_CODE",
+      "DESCRIPTION",
+      "DRG_SEVERITY",
+      "DRG_MORTALITY"
+    ],
+    "types": {
+      "ROW_ID": "INTEGER",
+      "SUBJECT_ID": "INTEGER",
+      "HADM_ID": "INTEGER",
+      "DRG_TYPE": "TEXT",
+      "DRG_CODE": "INTEGER",
+      "DESCRIPTION": "TEXT",
+      "DRG_SEVERITY": "REAL",
+      "DRG_MORTALITY": "REAL"
+    }
+  },
+  "diagnoses_icd_random": {
+    "columns": [
+      "ROW_ID",
+      "SUBJECT_ID",
+      "HADM_ID",
+      "SEQ_NUM",
+      "ICD9_CODE"
+    ],
+    "types": {
+      "ROW_ID": "INTEGER",
+      "SUBJECT_ID": "INTEGER",
+      "HADM_ID": "INTEGER",
+      "SEQ_NUM": "REAL",
+      "ICD9_CODE": "TEXT"
+    }
+  },
+  "datetimeevents_cv_random": {
+    "columns": [
+      "ROW_ID",
+      "SUBJECT_ID",
+      "HADM_ID",
+      "ICUSTAY_ID",
+      "ITEMID",
+      "CHARTTIME",
+      "STORETIME",
+      "CGID",
+      "VALUE",
+      "VALUEUOM",
+      "WARNING",
+      "ERROR",
+      "RESULTSTATUS",
+      "STOPPED"
+    ],
+    "types": {
+      "ROW_ID": "INTEGER",
+      "SUBJECT_ID": "INTEGER",
+      "HADM_ID": "REAL",
+      "ICUSTAY_ID": "REAL",
+      "ITEMID": "INTEGER",
+      "CHARTTIME": "TEXT",
+      "STORETIME": "TEXT",
+      "CGID": "INTEGER",
+      "VALUE": "TEXT",
+      "VALUEUOM": "TEXT",
+      "WARNING": "REAL",
+      "ERROR": "REAL",
+      "RESULTSTATUS": "REAL",
+      "STOPPED": "TEXT"
+    }
+  },
+  "cptevents_random": {
+    "columns": [
+      "ROW_ID",
+      "SUBJECT_ID",
+      "HADM_ID",
+      "COSTCENTER",
+      "CHARTDATE",
+      "CPT_CD",
+      "CPT_NUMBER",
+      "CPT_SUFFIX",
+      "TICKET_ID_SEQ",
+      "SECTIONHEADER",
+      "SUBSECTIONHEADER",
+      "DESCRIPTION"
+    ],
+    "types": {
+      "ROW_ID": "INTEGER",
+      "SUBJECT_ID": "INTEGER",
+      "HADM_ID": "INTEGER",
+      "COSTCENTER": "TEXT",
+      "CHARTDATE": "TEXT",
+      "CPT_CD": "TEXT",
+      "CPT_NUMBER": "REAL",
+      "CPT_SUFFIX": "TEXT",
+      "TICKET_ID_SEQ": "REAL",
+      "SECTIONHEADER": "TEXT",
+      "SUBSECTIONHEADER": "TEXT",
+      "DESCRIPTION": "TEXT"
+    }
+  },
+  "d_icd_diagnoses": {
+    "columns": [
+      "ROW_ID",
+      "ICD9_CODE",
+      "SHORT_TITLE",
+      "LONG_TITLE"
+    ],
+    "types": {
+      "ROW_ID": "INTEGER",
+      "ICD9_CODE": "TEXT",
+      "SHORT_TITLE": "TEXT",
+      "LONG_TITLE": "TEXT"
+    },
+    "join_keys": [
+      "icd9_code",
+      "long_title"
+    ]
+  },
+  "noteevents_random": {
+    "columns": [
+      "ROW_ID",
+      "SUBJECT_ID",
+      "HADM_ID",
+      "CHARTDATE",
+      "CHARTTIME",
+      "STORETIME",
+      "CATEGORY",
+      "DESCRIPTION",
+      "CGID",
+      "ISERROR",
+      "TEXT"
+    ],
+    "types": {
+      "ROW_ID": "INTEGER",
+      "SUBJECT_ID": "INTEGER",
+      "HADM_ID": "REAL",
+      "CHARTDATE": "TEXT",
+      "CHARTTIME": "TEXT",
+      "STORETIME": "TEXT",
+      "CATEGORY": "TEXT",
+      "DESCRIPTION": "TEXT",
+      "CGID": "REAL",
+      "ISERROR": "REAL",
+      "TEXT": "TEXT"
+    }
+  },
+  "d_icd_procedures": {
+    "columns": [
+      "ROW_ID",
+      "ICD9_CODE",
+      "SHORT_TITLE",
+      "LONG_TITLE"
+    ],
+    "types": {
+      "ROW_ID": "INTEGER",
+      "ICD9_CODE": "INTEGER",
+      "SHORT_TITLE": "TEXT",
+      "LONG_TITLE": "TEXT"
+    }
+  }
+}

@@ -1,2 +1,21 @@
-# Ignore all large data files
-data/
+# Ignore raw CSV data (large and unnecessary for repo)
+data/csv/
+
+# Ignore full-size database file
+data/mimic_iii.db
+
+# DO NOT ignore: schema_map.json and query_log.csv
+
+# Secrets (API keys etc.)
+.streamlit/secrets.toml
+
+# Python virtual environments
+.venv/
+venv/
+
+# OS/system files
+.DS_Store
+
+# Python bytecode/cache
+__pycache__/
+*.pyc

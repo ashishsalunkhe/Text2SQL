@@ -1,0 +1,11 @@
+question,sql_query,result_preview
+What procedures are most common among patients who died?,"SELECT d_icd_procedures.SHORT_TITLE, COUNT(procedures_icd_random.ICD9_CODE) AS PROCEDURE_COUNT
+FROM procedures_icd_random
+JOIN d_icd_procedures ON procedures_icd_random.ICD9_CODE = d_icd_procedures.ICD9_CODE
+JOIN patients_random ON procedures_icd_random.SUBJECT_ID = patients_random.SUBJECT_ID
+WHERE patients_random.EXPIRE_FLAG = 1
+GROUP BY procedures_icd_random.ICD9_CODE
+ORDER BY PROCEDURE_COUNT DESC;","[{""SHORT_TITLE"":""Venous cath NEC"",""PROCEDURE_COUNT"":460},{""SHORT_TITLE"":""Insert endotracheal tube"",""PROCEDURE_COUNT"":322},{""SHORT_TITLE"":""Cont inv mec ven <96 hrs"",""PROCEDURE_COUNT"":275},{""SHORT_TITLE"":""Entral infus nutrit sub"",""PROCEDURE_COUNT"":247},{""SHORT_TITLE"":""Packed cell transfusion"",""PROCEDURE_COUNT"":226}]"
+How many people have diabetes?,"SELECT COUNT(DISTINCT SUBJECT_ID) 
+FROM diagnoses_icd_random 
+WHERE ICD9_CODE LIKE '250%'","[{""COUNT(DISTINCT SUBJECT_ID)"":2272}]"
