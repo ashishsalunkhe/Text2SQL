@@ -1,4 +1,3 @@
-# ✅ Local Script: Build MIMIC-III SQLite DB and Schema Map, then Query with GPT
 # Directory Structure:
 # mimic_text_to_sql/
 # ├── data/
