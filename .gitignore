@@ -1,2 +1,2 @@
-data/mimic_iii.db
-data/csv/*.csv
+# Ignore all large data files
+data/
