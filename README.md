@@ -7,6 +7,24 @@ University of Maryland, College Park
 
 ---
 
+## 🚀 Repo Structure
+
+```
+mimic_text_to_sql/
+├── data/
+│   ├── mimic_iii.db         # SQLite DB from CSVs
+│   ├── schema_map.json      # JSON schema metadata
+│   └── query_log.csv        # Logged questions, SQL, results
+├── app/
+│   ├── main.py              # CLI interface
+│   ├── ui.py                # Streamlit interface
+├── .streamlit/
+│   └── secrets.toml         # API keys (ignored)
+├── requirements.txt
+└── README.md
+```
+---
+
 ## 📌 Problem Formulation
 
 Large Language Models (LLMs) have shown increasing capability in natural language understanding and structured data reasoning. One practical application is translating natural language questions into SQL queries to access complex medical datasets like MIMIC-III.
@@ -158,21 +176,4 @@ All components were orchestrated within a modular Python architecture with `main
 * **Ashish Salunkhe** — [ashishsalunke.com](https://ashishsalunke.com)
 * **Aryaman Paigankar** — University of Maryland
 
----
 
-## 🚀 Repo Structure (Optional)
-
-```
-mimic_text_to_sql/
-├── data/
-│   ├── mimic_iii.db         # SQLite DB from CSVs
-│   ├── schema_map.json      # JSON schema metadata
-│   └── query_log.csv        # Logged questions, SQL, results
-├── app/
-│   ├── main.py              # CLI interface
-│   ├── ui.py                # Streamlit interface
-├── .streamlit/
-│   └── secrets.toml         # API keys (ignored)
-├── requirements.txt
-└── README.md
-```
