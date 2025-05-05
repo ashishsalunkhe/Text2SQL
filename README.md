@@ -176,5 +176,3 @@ mimic_text_to_sql/
 ├── requirements.txt
 └── README.md
 ```
-
-Would you like a PDF export or Streamlit-hosted markdown viewer?
