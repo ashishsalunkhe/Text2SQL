@@ -9,3 +9,186 @@ ORDER BY PROCEDURE_COUNT DESC;","[{""SHORT_TITLE"":""Venous cath NEC"",""PROCEDU
 How many people have diabetes?,"SELECT COUNT(DISTINCT SUBJECT_ID) 
 FROM diagnoses_icd_random 
 WHERE ICD9_CODE LIKE '250%'","[{""COUNT(DISTINCT SUBJECT_ID)"":2272}]"
+How many have diabetes?,"SELECT COUNT(DISTINCT SUBJECT_ID) 
+FROM diagnoses_icd_random 
+WHERE ICD9_CODE LIKE '250%'","[{""COUNT(DISTINCT SUBJECT_ID)"":2272}]"
+How many people dont have diabetes but are on dialysis?,"SELECT COUNT(DISTINCT p.SUBJECT_ID)
+FROM patients_random p
+JOIN diagnoses_icd_random d ON p.SUBJECT_ID = d.SUBJECT_ID
+JOIN procedures_icd_random pr ON p.SUBJECT_ID = pr.SUBJECT_ID
+WHERE d.ICD9_CODE NOT LIKE '250%'
+AND pr.ICD9_CODE LIKE '39%' OR pr.ICD9_CODE LIKE '54%';","[{""COUNT(DISTINCT p.SUBJECT_ID)"":126}]"
+What are the top 10 diagnoses (by ICD-9 code) among patients who were admitted to the ICU and later died in the hospital?,"SELECT icd9_code, COUNT(icd9_code) AS diagnosis_count
+FROM diagnoses_icd_random
+WHERE HADM_ID IN (
+    SELECT HADM_ID
+    FROM icustays_random
+    WHERE SUBJECT_ID IN (
+        SELECT SUBJECT_ID
+        FROM patients_random
+        WHERE EXPIRE_FLAG = 1
+    )
+)
+GROUP BY icd9_code
+ORDER BY diagnosis_count DESC
+LIMIT 10;","[{""ICD9_CODE"":""4019"",""diagnosis_count"":86},{""ICD9_CODE"":""4280"",""diagnosis_count"":75},{""ICD9_CODE"":""42731"",""diagnosis_count"":68},{""ICD9_CODE"":""41401"",""diagnosis_count"":55},{""ICD9_CODE"":""5849"",""diagnosis_count"":46}]"
+What are the top 10 diagnoses (by ICD-9 code) among patients who were admitted to the ICU and later died in the hospital?,"SELECT icd9_code, COUNT(icd9_code) AS diagnosis_count
+FROM diagnoses_icd_random
+WHERE hadm_id IN (
+    SELECT DISTINCT hadm_id
+    FROM icustays_random
+    WHERE hadm_id IS NOT NULL
+)
+AND hadm_id IN (
+    SELECT DISTINCT hadm_id
+    FROM admissions_random
+    WHERE hospital_expire_flag = 1
+)
+GROUP BY icd9_code
+ORDER BY diagnosis_count DESC
+LIMIT 10;","[{""ICD9_CODE"":""4280"",""diagnosis_count"":22},{""ICD9_CODE"":""42731"",""diagnosis_count"":21},{""ICD9_CODE"":""4019"",""diagnosis_count"":20},{""ICD9_CODE"":""5845"",""diagnosis_count"":13},{""ICD9_CODE"":""5849"",""diagnosis_count"":12}]"
+What are the top 10 diagnoses (by ICD-9 code) among patients who were admitted to the ICU and later died in the hospital?,"SELECT icd9_code, COUNT(icd9_code) AS diagnosis_count
+FROM diagnoses_icd_random
+WHERE HADM_ID IN (
+    SELECT HADM_ID
+    FROM icustays_random
+    WHERE SUBJECT_ID IN (
+        SELECT SUBJECT_ID
+        FROM patients_random
+        WHERE EXPIRE_FLAG = 1
+    )
+)
+GROUP BY icd9_code
+ORDER BY diagnosis_count DESC
+LIMIT 10;","[{""ICD9_CODE"":""4019"",""diagnosis_count"":86},{""ICD9_CODE"":""4280"",""diagnosis_count"":75},{""ICD9_CODE"":""42731"",""diagnosis_count"":68},{""ICD9_CODE"":""41401"",""diagnosis_count"":55},{""ICD9_CODE"":""5849"",""diagnosis_count"":46}]"
+What are the top 10 diagnoses (by ICD-9 code) among patients who were admitted to the ICU and later died in the hospital?,"SELECT icd9_code, COUNT(icd9_code) AS diagnosis_count
+FROM diagnoses_icd_random
+WHERE HADM_ID IN (
+    SELECT HADM_ID
+    FROM icustays_random
+    WHERE SUBJECT_ID IN (
+        SELECT SUBJECT_ID
+        FROM patients_random
+        WHERE EXPIRE_FLAG = 1
+    )
+)
+GROUP BY icd9_code
+ORDER BY diagnosis_count DESC
+LIMIT 10;","[{""ICD9_CODE"":""4019"",""diagnosis_count"":86},{""ICD9_CODE"":""4280"",""diagnosis_count"":75},{""ICD9_CODE"":""42731"",""diagnosis_count"":68},{""ICD9_CODE"":""41401"",""diagnosis_count"":55},{""ICD9_CODE"":""5849"",""diagnosis_count"":46}]"
+What are the top 10 diagnoses (by ICD-9 code) among patients who were admitted to the ICU and later died in the hospital?,"SELECT icd9_code, COUNT(icd9_code) AS diagnosis_count
+FROM diagnoses_icd_random
+WHERE hadm_id IN (
+    SELECT DISTINCT hadm_id
+    FROM icustays_random
+    WHERE hadm_id IS NOT NULL
+)
+AND hadm_id IN (
+    SELECT DISTINCT hadm_id
+    FROM admissions_random
+    WHERE hospital_expire_flag = 1
+)
+GROUP BY icd9_code
+ORDER BY diagnosis_count DESC
+LIMIT 10;","[{""ICD9_CODE"":""4280"",""diagnosis_count"":22},{""ICD9_CODE"":""42731"",""diagnosis_count"":21},{""ICD9_CODE"":""4019"",""diagnosis_count"":20},{""ICD9_CODE"":""5845"",""diagnosis_count"":13},{""ICD9_CODE"":""5849"",""diagnosis_count"":12}]"
+What are the most common ICD-9 diagnoses among ICU patients,"SELECT icd9_code, COUNT(icd9_code) AS diagnosis_count
+FROM diagnoses_icd_random
+GROUP BY icd9_code
+ORDER BY diagnosis_count DESC;","[{""ICD9_CODE"":""4019"",""diagnosis_count"":4386},{""ICD9_CODE"":""4280"",""diagnosis_count"":2821},{""ICD9_CODE"":""42731"",""diagnosis_count"":2808},{""ICD9_CODE"":""41401"",""diagnosis_count"":2711},{""ICD9_CODE"":""25000"",""diagnosis_count"":1925}]"
+What are the most common ICD-9 diagnoses among ICU patients,"SELECT icd9_code, COUNT(icd9_code) AS diagnosis_count
+FROM diagnoses_icd_random
+GROUP BY icd9_code
+ORDER BY diagnosis_count DESC;","[{""ICD9_CODE"":""4019"",""diagnosis_count"":4386},{""ICD9_CODE"":""4280"",""diagnosis_count"":2821},{""ICD9_CODE"":""42731"",""diagnosis_count"":2808},{""ICD9_CODE"":""41401"",""diagnosis_count"":2711},{""ICD9_CODE"":""25000"",""diagnosis_count"":1925}]"
+What are the most common ICD-9 diagnoses among ICU patients,"SELECT icd9_code, COUNT(icd9_code) AS diagnosis_count
+FROM diagnoses_icd_random
+GROUP BY icd9_code
+ORDER BY diagnosis_count DESC;","[{""ICD9_CODE"":""4019"",""diagnosis_count"":4386},{""ICD9_CODE"":""4280"",""diagnosis_count"":2821},{""ICD9_CODE"":""42731"",""diagnosis_count"":2808},{""ICD9_CODE"":""41401"",""diagnosis_count"":2711},{""ICD9_CODE"":""25000"",""diagnosis_count"":1925}]"
+What conditions frequently occur in patients admitted for sepsis?,"SELECT d_icd_diagnoses.LONG_TITLE, COUNT(diagnoses_icd_random.HADM_ID) AS frequency
+FROM diagnoses_icd_random
+JOIN d_icd_diagnoses ON diagnoses_icd_random.ICD9_CODE = d_icd_diagnoses.ICD9_CODE
+WHERE diagnoses_icd_random.HADM_ID IN 
+    (SELECT HADM_ID FROM diagnoses_icd_random WHERE ICD9_CODE LIKE '995%')
+GROUP BY diagnoses_icd_random.ICD9_CODE
+ORDER BY frequency DESC;","[{""LONG_TITLE"":""Severe sepsis"",""frequency"":829},{""LONG_TITLE"":""Unspecified septicemia"",""frequency"":692},{""LONG_TITLE"":""Septic shock"",""frequency"":548},{""LONG_TITLE"":""Acute kidney failure, unspecified"",""frequency"":470},{""LONG_TITLE"":""Acute respiratory failure"",""frequency"":449}]"
+What conditions frequently occur in patients admitted for sepsis?,"SELECT d_icd_diagnoses.LONG_TITLE, COUNT(diagnoses_icd_random.HADM_ID) AS frequency
+FROM diagnoses_icd_random
+JOIN d_icd_diagnoses ON diagnoses_icd_random.ICD9_CODE = d_icd_diagnoses.ICD9_CODE
+WHERE diagnoses_icd_random.HADM_ID IN 
+    (SELECT HADM_ID FROM diagnoses_icd_random WHERE ICD9_CODE LIKE '995%')
+GROUP BY diagnoses_icd_random.ICD9_CODE
+ORDER BY frequency DESC;","[{""LONG_TITLE"":""Severe sepsis"",""frequency"":829},{""LONG_TITLE"":""Unspecified septicemia"",""frequency"":692},{""LONG_TITLE"":""Septic shock"",""frequency"":548},{""LONG_TITLE"":""Acute kidney failure, unspecified"",""frequency"":470},{""LONG_TITLE"":""Acute respiratory failure"",""frequency"":449}]"
+What drugs were most prescribed to patients with pneumonia diagnoses?,"SELECT p.DRUG_NAME_GENERIC, COUNT(p.DRUG_NAME_GENERIC) AS prescription_count
+FROM prescriptions_random p
+JOIN diagnoses_icd_random d ON p.HADM_ID = d.HADM_ID
+WHERE d.ICD9_CODE LIKE '486%'
+GROUP BY p.DRUG_NAME_GENERIC
+ORDER BY prescription_count DESC;","[{""DRUG_NAME_GENERIC"":""Furosemide"",""prescription_count"":1123},{""DRUG_NAME_GENERIC"":""Potassium Chloride"",""prescription_count"":633},{""DRUG_NAME_GENERIC"":""Metoprolol"",""prescription_count"":594},{""DRUG_NAME_GENERIC"":""Sodium Chloride 0.9%  Flush"",""prescription_count"":486},{""DRUG_NAME_GENERIC"":""Lorazepam"",""prescription_count"":405}]"
+What drugs were most prescribed to patients with pneumonia diagnoses?,"SELECT p.DRUG_NAME_GENERIC, COUNT(p.DRUG_NAME_GENERIC) AS prescription_count
+FROM prescriptions_random p
+JOIN diagnoses_icd_random d ON p.HADM_ID = d.HADM_ID
+WHERE d.ICD9_CODE LIKE '486%'
+GROUP BY p.DRUG_NAME_GENERIC
+ORDER BY prescription_count DESC;","[{""DRUG_NAME_GENERIC"":""Furosemide"",""prescription_count"":1123},{""DRUG_NAME_GENERIC"":""Potassium Chloride"",""prescription_count"":633},{""DRUG_NAME_GENERIC"":""Metoprolol"",""prescription_count"":594},{""DRUG_NAME_GENERIC"":""Sodium Chloride 0.9%  Flush"",""prescription_count"":486},{""DRUG_NAME_GENERIC"":""Lorazepam"",""prescription_count"":405}]"
+What are the top comorbidities in diabetic patients?,"SELECT d_icd_diagnoses.LONG_TITLE, COUNT(diagnoses_icd_random.SUBJECT_ID) AS num_patients
+FROM diagnoses_icd_random
+JOIN d_icd_diagnoses ON diagnoses_icd_random.ICD9_CODE = d_icd_diagnoses.ICD9_CODE
+WHERE diagnoses_icd_random.ICD9_CODE LIKE '250%'
+GROUP BY diagnoses_icd_random.ICD9_CODE
+ORDER BY num_patients DESC;","[{""LONG_TITLE"":""Diabetes mellitus without mention of complication, type II or unspecified type, not stated as uncontrolled"",""num_patients"":1925},{""LONG_TITLE"":""Diabetes with neurological manifestations, type II or unspecified type, not stated as uncontrolled"",""num_patients"":284},{""LONG_TITLE"":""Diabetes with renal manifestations, type II or unspecified type, not stated as uncontrolled"",""num_patients"":225},{""LONG_TITLE"":""Diabetes with neurological manifestations, type I [juvenile type], not stated as uncontrolled"",""num_patients"":121},{""LONG_TITLE"":""Diabetes with ketoacidosis, type I [juvenile type], uncontrolled"",""num_patients"":119}]"
+What are the top comorbidities in diabetic patients?,"SELECT d_icd_diagnoses.LONG_TITLE, COUNT(diagnoses_icd_random.SUBJECT_ID) AS num_patients
+FROM diagnoses_icd_random
+JOIN d_icd_diagnoses ON diagnoses_icd_random.ICD9_CODE = d_icd_diagnoses.ICD9_CODE
+WHERE diagnoses_icd_random.ICD9_CODE LIKE '250%'
+GROUP BY diagnoses_icd_random.ICD9_CODE
+ORDER BY num_patients DESC;","[{""LONG_TITLE"":""Diabetes mellitus without mention of complication, type II or unspecified type, not stated as uncontrolled"",""num_patients"":1925},{""LONG_TITLE"":""Diabetes with neurological manifestations, type II or unspecified type, not stated as uncontrolled"",""num_patients"":284},{""LONG_TITLE"":""Diabetes with renal manifestations, type II or unspecified type, not stated as uncontrolled"",""num_patients"":225},{""LONG_TITLE"":""Diabetes with neurological manifestations, type I [juvenile type], not stated as uncontrolled"",""num_patients"":121},{""LONG_TITLE"":""Diabetes with ketoacidosis, type I [juvenile type], uncontrolled"",""num_patients"":119}]"
+What are the top comorbidities in diabetic patients?,"SELECT d_icd_diagnoses.LONG_TITLE, COUNT(diagnoses_icd_random.SUBJECT_ID) AS num_patients
+FROM diagnoses_icd_random
+JOIN d_icd_diagnoses ON diagnoses_icd_random.ICD9_CODE = d_icd_diagnoses.ICD9_CODE
+WHERE diagnoses_icd_random.ICD9_CODE LIKE '250%'
+GROUP BY diagnoses_icd_random.ICD9_CODE
+ORDER BY num_patients DESC;","[{""LONG_TITLE"":""Diabetes mellitus without mention of complication, type II or unspecified type, not stated as uncontrolled"",""num_patients"":1925},{""LONG_TITLE"":""Diabetes with neurological manifestations, type II or unspecified type, not stated as uncontrolled"",""num_patients"":284},{""LONG_TITLE"":""Diabetes with renal manifestations, type II or unspecified type, not stated as uncontrolled"",""num_patients"":225},{""LONG_TITLE"":""Diabetes with neurological manifestations, type I [juvenile type], not stated as uncontrolled"",""num_patients"":121},{""LONG_TITLE"":""Diabetes with ketoacidosis, type I [juvenile type], uncontrolled"",""num_patients"":119}]"
+Which organisms are most resistant to antibiotics?,"SELECT ORG_NAME, COUNT(ORG_NAME) AS ORGANISM_COUNT
+FROM microbiologyevents_random
+WHERE AB_NAME IS NOT NULL
+GROUP BY ORG_NAME
+ORDER BY ORGANISM_COUNT DESC;","[{""ORG_NAME"":""STAPH AUREUS COAG +"",""ORGANISM_COUNT"":15647},{""ORG_NAME"":""ESCHERICHIA COLI"",""ORGANISM_COUNT"":15582},{""ORG_NAME"":""KLEBSIELLA PNEUMONIAE"",""ORGANISM_COUNT"":7467},{""ORG_NAME"":""STAPHYLOCOCCUS, COAGULASE NEGATIVE"",""ORGANISM_COUNT"":6962},{""ORG_NAME"":""PSEUDOMONAS AERUGINOSA"",""ORGANISM_COUNT"":6399}]"
+What are the most common lab tests for ICU patients diagnosed with sepsis or pneumonia?,"SELECT d_labitems.label, COUNT(*) AS test_count
+FROM labevents_random
+JOIN d_labitems ON labevents_random.itemid = d_labitems.itemid
+WHERE labevents_random.subject_id IN (
+    SELECT DISTINCT subject_id
+    FROM diagnoses_icd_random
+    WHERE icd9_code LIKE '995%' OR icd9_code LIKE '486%'
+)
+GROUP BY d_labitems.label
+ORDER BY test_count DESC;","[{""LABEL"":""Glucose"",""test_count"":19827},{""LABEL"":""Hematocrit"",""test_count"":17291},{""LABEL"":""Potassium"",""test_count"":17213},{""LABEL"":""Sodium"",""test_count"":16468},{""LABEL"":""Creatinine"",""test_count"":16379}]"
+What are the most common lab tests for ICU patients diagnosed with sepsis or pneumonia?,"SELECT d_labitems.label, COUNT(*) AS test_count
+FROM labevents_random
+JOIN d_labitems ON labevents_random.itemid = d_labitems.itemid
+WHERE labevents_random.subject_id IN (
+    SELECT DISTINCT subject_id
+    FROM diagnoses_icd_random
+    WHERE icd9_code LIKE '995%' OR icd9_code LIKE '486%'
+)
+GROUP BY d_labitems.label
+ORDER BY test_count DESC;","[{""LABEL"":""Glucose"",""test_count"":19827},{""LABEL"":""Hematocrit"",""test_count"":17291},{""LABEL"":""Potassium"",""test_count"":17213},{""LABEL"":""Sodium"",""test_count"":16468},{""LABEL"":""Creatinine"",""test_count"":16379}]"
+What are the most common lab tests for ICU patients diagnosed with sepsis or pneumonia?,"SELECT d_labitems.label, COUNT(*) AS lab_count
+FROM labevents_random
+JOIN d_labitems ON labevents_random.itemid = d_labitems.itemid
+JOIN diagnoses_icd_random ON labevents_random.subject_id = diagnoses_icd_random.subject_id
+WHERE diagnoses_icd_random.icd9_code LIKE '995%' OR diagnoses_icd_random.icd9_code LIKE '486%'
+GROUP BY d_labitems.label
+ORDER BY lab_count DESC;","[{""LABEL"":""Glucose"",""lab_count"":35046},{""LABEL"":""Hematocrit"",""lab_count"":31362},{""LABEL"":""Potassium"",""lab_count"":31255},{""LABEL"":""Sodium"",""lab_count"":29770},{""LABEL"":""Creatinine"",""lab_count"":29524}]"
+What are the most common lab tests for ICU patients diagnosed with sepsis or pneumonia?,"SELECT d_labitems.label, COUNT(*) AS test_count
+FROM labevents_random
+JOIN d_labitems ON labevents_random.itemid = d_labitems.itemid
+JOIN diagnoses_icd_random ON labevents_random.subject_id = diagnoses_icd_random.subject_id
+WHERE diagnoses_icd_random.icd9_code LIKE '99591%' OR diagnoses_icd_random.icd9_code LIKE '486%'
+GROUP BY d_labitems.label
+ORDER BY test_count DESC;","[{""LABEL"":""Glucose"",""test_count"":19800},{""LABEL"":""Hematocrit"",""test_count"":17983},{""LABEL"":""Potassium"",""test_count"":17839},{""LABEL"":""Sodium"",""test_count"":16983},{""LABEL"":""Creatinine"",""test_count"":16839}]"
+What are the most common lab tests for ICU patients diagnosed with sepsis or pneumonia?,"SELECT d_labitems.label, COUNT(*) AS test_count
+FROM labevents_random
+JOIN d_labitems ON labevents_random.itemid = d_labitems.itemid
+JOIN diagnoses_icd_random ON labevents_random.subject_id = diagnoses_icd_random.subject_id
+WHERE diagnoses_icd_random.icd9_code LIKE '995%' OR diagnoses_icd_random.icd9_code LIKE '486%'
+GROUP BY d_labitems.label
+ORDER BY test_count DESC;","[{""LABEL"":""Glucose"",""test_count"":35046},{""LABEL"":""Hematocrit"",""test_count"":31362},{""LABEL"":""Potassium"",""test_count"":31255},{""LABEL"":""Sodium"",""test_count"":29770},{""LABEL"":""Creatinine"",""test_count"":29524}]"
