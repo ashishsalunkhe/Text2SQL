@@ -96,13 +96,14 @@ We also set up:
 
    * Given a user question, retrieve top-k relevant table schemas
 5. **Prompt Construction**
-
+g
    * Inject schema context + user query into GPT-3.5-Turbo prompt
 6. **LLM SQL Generation**
 
    * Parse GPT output to SQL, execute, and return results
 
 All components were orchestrated within a modular Python architecture with `main.py` (CLI) and `ui.py` (Streamlit).
+
 
 ---
 
