@@ -8,6 +8,79 @@ University of Maryland, College Park
 ---
 ## How to reproduct this project?
 
+This guide will help you set up and run the Text-to-SQL system for querying the MIMIC-III dataset using natural language.
+
+---
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/your-username/mimic-llm-text2sql.git
+cd mimic-llm-text2sql
+```
+
+---
+
+### Set Up the Python Environment
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate     # On Windows use: .venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+---
+
+### Download the Dataset
+
+* Go to [Kaggle – mimic-iii-10k dataset](https://www.kaggle.com/datasets/bilal1907/mimic-iii-10k)
+* Download only the `*_random.csv` files
+* Place them in the following directory:
+
+```bash
+data/csv/
+```
+
+---
+
+### Set OpenAI API Key
+
+* Create a file named `.streamlit/secrets.toml` at the root of your repo
+* Add your OpenAI key as follows:
+
+```toml
+OPENAI_API_KEY = "your-api-key-here"
+```
+
+---
+
+### Build the SQLite DB and Schema Map
+
+```bash
+python app/main.py --question "What are the most common diagnoses?"
+```
+
+This will create `mimic_iii.db` and `schema_map.json` in the `data/` directory.
+
+---
+
+### Run the Streamlit UI App
+
+```bash
+streamlit run app/ui.py
+```
+
+This will open a browser where you can ask clinical questions in plain English.
+
+---
+
+### Run via Command-Line (Optional)
+
+You can also run the pipeline through CLI:
+
+```bash
+python app/main.py --question "Which lab tests are common in diabetic patients?"
+```
 
 
 ---
